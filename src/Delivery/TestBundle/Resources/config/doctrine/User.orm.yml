@@ -1,0 +1,22 @@
+Delivery\TestBundle\Entity\User:
+    type: entity
+    table: fos_user
+    repositoryClass: Delivery\TestBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToMany:
+        groups:
+            targetEntity: Grupo
+            joinTable:
+                name: fos_user_group
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
+    lifecycleCallbacks: {  }
