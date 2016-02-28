@@ -74,3 +74,6 @@ fos_user:
     user_class: Delivery\TestBundle\Entity\User
     group:
         group_class: Delivery\TestBundle\Entity\Group
+    registration:
+        form:
+            type: Delivery\TestBundle\Form\RegistrationType

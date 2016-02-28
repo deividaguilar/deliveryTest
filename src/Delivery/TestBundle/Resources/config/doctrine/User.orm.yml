@@ -19,4 +19,10 @@ Delivery\TestBundle\Entity\User:
                 inverseJoinColumns:
                     group_id:
                         referencedColumnName: id
+    fields:
+        numberPhone:
+            type: string
+            length: 255
+            column: numberPhone
+            nullable: false
     lifecycleCallbacks: {  }

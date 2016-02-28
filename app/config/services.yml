@@ -9,3 +9,8 @@ services:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
     fos_user.doctrine_registry:
         alias: doctrine
+        
+    app.form.registration:
+        class: Delivery\TestBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: delivery_test_registration }
