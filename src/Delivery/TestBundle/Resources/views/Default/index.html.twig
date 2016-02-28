@@ -47,9 +47,10 @@
                     <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
                     <div id="navbar">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Perfil</a></li>
+                            <li class="active"><a href="#">Home</a></li>
+                            <li ><a href="#">Perfil</a></li>
                             <li><a href="#about">Cambio de Clave</a></li>
-                            <li><a href="#contact">info</a></li>
+                            <li><a href="{{ path("fos_logout") }}">LogOut</a></li>
                                 {#<li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                                   <ul class="dropdown-menu">
@@ -80,7 +81,7 @@
 
             <div class="container">
                 <div class="page-header">
-                    {{ app.user ? app.user.username : 'Anonymous' }}
+                   Bienvenido {{ app.user ? app.user.username : 'Anonymous' }}
                 </div>
                 {#<div class="page-header">
                     <h1>Non-responsive Bootstrap</h1>
