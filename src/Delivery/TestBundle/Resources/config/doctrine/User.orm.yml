@@ -8,17 +8,6 @@ Delivery\TestBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
-    manyToMany:
-        groups:
-            targetEntity: Grupo
-            joinTable:
-                name: fos_user_group
-                joinColumns:
-                    user_id:
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    group_id:
-                        referencedColumnName: id
     fields:
         numberPhone:
             type: string
