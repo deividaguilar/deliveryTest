@@ -66,3 +66,21 @@ admin_borrar:
     defaults: { _controller: DeliveryTestBundle:Admin:borrar }
     requirements:
         id : \d+
+        
+usuario_perfil:
+    path:     /profile/{id}
+    defaults: { _controller: DeliveryTestBundle:Usuario:index }
+    requirements:
+        id : \d+
+        
+usuario_editar:
+    path:     /profile/editar/{id}
+    defaults: { _controller: DeliveryTestBundle:Usuario:editar }
+    requirements:
+        id : \d+
+        
+usuario_actualizar:
+    path:     /profile/actualizar/{id}
+    defaults: { _controller: DeliveryTestBundle:Usuario:actualizar }
+    requirements:
+        id : \d+

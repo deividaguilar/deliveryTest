@@ -1,0 +1,57 @@
+{% extends "DeliveryTestBundle::layout.html.twig" %}
+{% block title %}
+    Perfil Usurio
+{% endblock %}
+{% block body %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Usuario
+                </th>
+                <th>
+                    email
+                </th>
+                <th>
+                    Telefono
+                </th>
+                <th>
+                    Roles
+                </th>
+                <th>
+                    Editar
+                </th>
+            </tr>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>
+                    {{usuarios.id}}
+                </td>
+                <td>
+                    {{usuarios.username}}
+                </td>
+                <td>
+                    {{usuarios.email}}
+                </td>
+                <td>
+                    {{usuarios.numberPhone}}
+                </td>
+                <td>
+                    {% for rol in usuarios.roles %}
+                        {{rol}} </br>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{path('usuario_editar', {'id':usuarios.id})}}" class="btn btn-warning" role="button">Editar</a>
+                </td>
+            </tr>
+
+        <tbody>
+    </table>
+{% endblock %}
