@@ -1,0 +1,29 @@
+{% extends "DeliveryTestBundle::layout.html.twig" %}
+{% block title %}
+    Crear USR
+{% endblock %}
+{% block body %}
+    <span class="title">Creación de Usuarios</span>
+    <form id="form_usuarios" method="post" class="form-horizontal" role="form" action="{{path('admin_guardar')}}">
+        <div class="form-group">
+            <label for="email">Email
+                <input id="email" name="email" type="email" required /> 
+            </label>
+            <label for="usuario">Usuario
+                <input id="usuario" name="usuario" type="text" required /> 
+            </label>
+            <label for="telefono">Telefono
+                <input id="telefono" name="telefono" type="number" required /> 
+            </label>
+            <label for="rol">Rol
+                <select id="rol" name="rol[]" multiple required>
+                    <option value="ROLE_USER">ROLE_USER</option> 
+                    <option value="ROLE_AGENT">ROLE_AGENT</option> 
+                    <option value="ROLE_ADMIN">ROLE_ADMIN</option> 
+                </select>
+            </label>
+        </div>
+        <input type="submit" class="btn btn-info" value="Guardar">
+        <a href="{{path('admin_home')}}" class="btn btn-danger" role="button">Cancelar</a>
+    </form>
+{% endblock %}

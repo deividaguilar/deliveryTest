@@ -32,3 +32,37 @@ fos_logout:
 delivery_test_homepage:
     path:     /
     defaults: { _controller: DeliveryTestBundle:Default:index }
+
+admin_home:
+    path:     /admin/
+    defaults: { _controller: DeliveryTestBundle:Admin:index }
+    
+agent_home:
+    path:     /agent/
+    defaults: { _controller: DeliveryTestBundle:Admin:index }
+    
+admin_crear:
+    path:     /admin/crear
+    defaults: { _controller: DeliveryTestBundle:Admin:crear }
+
+admin_guardar:
+    path:     /admin/guardar
+    defaults: { _controller: DeliveryTestBundle:Admin:guardar }
+
+admin_editar:
+    path:     /admin/editar/{id}
+    defaults: { _controller: DeliveryTestBundle:Admin:editar }
+    requirements:
+        id : \d+
+        
+admin_actualizar:
+    path:     /admin/actualizar/{id}
+    defaults: { _controller: DeliveryTestBundle:Admin:actualizar }
+    requirements:
+        id : \d+
+
+admin_borrar:
+    path:     /admin/borrar/{id}
+    defaults: { _controller: DeliveryTestBundle:Admin:borrar }
+    requirements:
+        id : \d+

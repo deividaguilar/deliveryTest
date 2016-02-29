@@ -4,17 +4,4 @@
 {% endblock %}
 {% block body %}
     Bienvenido {{ app.user ? app.user.username : 'Anonymous' }}
-
-    Role:
-    {% if is_granted('ROLE_ADMIN') %}
-        Administrator
-    {%elseif is_granted('ROLE_AGENT')%}
-        Agent
-    {% elseif is_granted('ROLE_USER') %}
-        User
-    {% else %}
-        Anonymous
-    {% endif %}
-
-
 {% endblock %}
