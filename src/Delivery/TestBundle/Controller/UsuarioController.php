@@ -20,18 +20,18 @@ class UsuarioController extends Controller {
 
         $user = $usrManager->findUserBy(array('id' => $id));
 
-        if (!empty($request->request->get('rol'))) {
+        if (!empty($request->request->get('telefono'))) {
 
             $user->setUsername($request->request->get('usuario'));
             $user->setEmail($request->request->get('email'));
             $user->setNumberPhone($request->request->get('telefono'));
-            $user->setRoles($request->request->get('rol'));
-
+            
             $usrManager->updateUser($user);
 
             $usr = $usrManager->findUserBy(array('id' => $id));
             return $this->render('DeliveryTestBundle:Usuario:index.html.twig', array('usuarios' => $usr));
         } else {
+            $usr = $usrManager->findUserBy(array('id' => $id));
             $this->mensaje("No Selecciono usuarios para editar");
             return $this->render('DeliveryTestBundle:Usuario:index.html.twig', array('usuarios' => $usr)
             );
@@ -46,8 +46,6 @@ class UsuarioController extends Controller {
         $datos->email = $usr->getEmail();
         $datos->usuario = $usr->getUsername();
         $datos->telefono = $usr->getNumberPhone();
-        $datos->roles = array('ROLE_ADMIN', 'ROLE_AGENT', 'ROLE_USER');
-        $datos->rol = $usr->getRoles();
         return $this->render('DeliveryTestBundle:Usuario:editar.html.twig', (array) $datos);
     }
 

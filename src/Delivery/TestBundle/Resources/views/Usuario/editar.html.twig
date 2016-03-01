@@ -15,17 +15,6 @@
             <label for="telefono">Telefono
                 <input id="telefono" value="{{telefono}}" name="telefono" type="number" required /> 
             </label>
-            <label for="rol">Rol
-                <select id="rol" name="rol[]" multiple required >
-                    {% for rol2 in roles  %}
-                        {% if rol2 in rol %}
-                            <option value="{{rol2}}" selected>{{rol2}}</option> 
-                        {% else %}
-                            <option value="{{rol2}}">{{rol2}}</option> 
-                        {% endif %}
-                    {% endfor %}
-                </select>
-            </label>
         </div>
         <input type="submit" class="btn btn-info" value="Guardar">
         <a href="{{path('usuario_perfil', {'id':app.user.id})}}" class="btn btn-danger" role="button">Cancelar</a>
