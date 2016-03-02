@@ -2,10 +2,44 @@
 {% block title %}
     Admini USR
 {% endblock %}
+
+{% block styles %}
+    <link href="{{ asset('bundles/deliverytest/upload-file/css/uploadfile.min.css') }}" rel="stylesheet"/>
+{% endblock %}
+
 {% block body %}
 
     {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{path('admin_crear')}}" class="btn btn-info" role="button">Crear Usuario</a>
+        <div id="controles">
+            <h3> Crear Usuarios</h3>
+            <div>
+                <a href="{{path('admin_crear')}}" class="btn btn-info" role="button">Crear Usuario</a>
+            </div>
+            <h3>Exportar</h3>
+            <div>
+                <a href="{{path('admin_exportar', {'type':'csv'})}}" class="btn btn-success" role="button">CSV</a>
+                <a href="{{path('admin_exportar', {'type':'xls'})}}" class="btn btn-success" role="button">XLS</a>
+                <a href="{{path('admin_exportar', {'type':'xlsx'})}}" class="btn btn-success" role="button">XLSX</a>
+                <a href="{{path('admin_exportar', {'type':'tsv'})}}" class="btn btn-success" role="button">TSV</a>
+            </div>
+            <h3>Importar</h3>
+            <div>
+                {#                <div><label> Cargar Archivo:</label></div>#}
+                {#<div id="fileuploader">Cargar</div>
+                <div id="respuesta">
+                </div>#}
+                <form name="form-import" id="form-import" method="post" action="{{path('admin_importar')}}" enctype="multipart/form-data" >
+                    <div class="form-group">
+                        <label class="control-label">Select File</label>
+                        <input id="upload" name="upload" class="file" type="file" class="file" />
+                        <input type="submit" value="Cargar" class="btn btn-success" />
+                        <input type="text" value="asljdks" name="prueba" id="prueba" />
+                        {{ form_widget() }} 
+                    </div>
+                </form>
+                <input type="hidden" id="filename" name="filename" value="{{sessionId}}" />
+            </div>
+        </div>
     {% endif %}
     <table class="table table-hover">
         <thead>
@@ -69,3 +103,7 @@
         <tbody>
     </table>
 {% endblock %}
+{% block scripts %}
+    <script src="{{ asset('bundles/deliverytest/upload-file/js/jquery.uploadfile.min.js') }}"></script>
+    <script src="{{ asset('bundles/deliverytest/js/admin.js') }}"></script>
+{%endblock%}

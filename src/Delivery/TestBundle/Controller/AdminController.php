@@ -3,13 +3,16 @@
 namespace Delivery\TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
-    Symfony\Component\HttpFoundation\Request;
+    Symfony\Component\HttpFoundation\Request,
+    Symfony\Component\HttpFoundation\Session\Session;
+;
 
 class AdminController extends Controller {
 
     public function indexAction() {
+        $session = new Session();
 
-        return $this->render('DeliveryTestBundle:Admin:index.html.twig', array('usuarios' => $this->todosLosUsuarios())
+        return $this->render('DeliveryTestBundle:Admin:index.html.twig', array('sessionId' => $session->getId(), 'usuarios' => $this->todosLosUsuarios())
         );
     }
 
@@ -31,7 +34,7 @@ class AdminController extends Controller {
         $user->setPassword(password_hash(12345, PASSWORD_BCRYPT));
 
         $usrManager->updateUser($user);
-        
+
         $this->mensaje("Usuario Creado Correctamente");
 
         return $this->render('DeliveryTestBundle:Admin:index.html.twig', array('usuarios' => $this->todosLosUsuarios()));

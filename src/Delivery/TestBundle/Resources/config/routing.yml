@@ -84,3 +84,11 @@ usuario_actualizar:
     defaults: { _controller: DeliveryTestBundle:Usuario:actualizar }
     requirements:
         id : \d+
+
+admin_exportar:
+    path:     /admin/exportar/{type}
+    defaults: { _controller: DeliveryTestBundle:Exportar:index }
+
+admin_importar:
+    path:     /admin/importar/
+    defaults: { _controller: DeliveryTestBundle:Importar:index }
