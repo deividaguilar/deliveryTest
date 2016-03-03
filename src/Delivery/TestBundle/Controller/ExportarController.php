@@ -111,7 +111,7 @@ class ExportarController extends Controller {
      */
 
     private function createExcel($objPhpExcel) {
-        if ($this->type == 'xls') {
+        if ($this->getType() == 'xls') {
             $format = 'Excel5';
         } else {
             $format = 'Excel2007';
@@ -127,7 +127,7 @@ class ExportarController extends Controller {
      */
 
     private function createPlane($objPhpExel) {
-        if ($this->type == 'csv') {
+        if ($this->getType() == 'csv') {
             $delimiter = ",";
         } else {
             $delimiter = "\t";

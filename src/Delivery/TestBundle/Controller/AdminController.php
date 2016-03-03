@@ -3,16 +3,13 @@
 namespace Delivery\TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
-    Symfony\Component\HttpFoundation\Request,
-    Symfony\Component\HttpFoundation\Session\Session;
-;
+    Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller {
 
     public function indexAction() {
-        $session = new Session();
 
-        return $this->render('DeliveryTestBundle:Admin:index.html.twig', array('sessionId' => $session->getId(), 'usuarios' => $this->todosLosUsuarios())
+        return $this->render('DeliveryTestBundle:Admin:index.html.twig', array('usuarios' => $this->todosLosUsuarios())
         );
     }
 

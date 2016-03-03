@@ -10,27 +10,45 @@ $(document).ready(function () {
         heightStyle: "content"
     });
 
-//    $("#fileuploader").uploadFile({
-//        url: "/web/app.php/admin/importar/",
-//        method: 'POST',
-//        allowedTypes: "xlsx,xls",
-//        fileName: $("#filename").val(),
-//        returnType: "json",
-//        onSubmit: function () {
-//            
-//        },
-//        onSuccess: function (files, data, xhr) {
-//            
-////            if (data.error != '') {
-////                $("#dialogo").html(data.error);
-////            } else {
-////                $("#dialogo").html(data.correcto);
-////            }
-////            $("#dialogo").dialog("open");
-//        },
-//        onError: function () {
-//            
-//        }
-//    });
+    $("#respuesta").dialog({
+        autoOpen: false,
+        height: 350,
+        width: 350,
+        show: {
+            effect: "blind",
+            duration: 1000
+        },
+        hide: {
+            effect: "explode",
+            duration: 1000
+        }
+    });
+
+    $("#fileuploader").uploadFile({
+        url: "/web/app.php/admin/importar/",
+        method: 'POST',
+        allowedTypes: "xlsx",
+        fileName: "archivoSubido",
+        multiple: false,
+        returnType: "json",
+        onSubmit: function () {
+
+        },
+        onSuccess: function (files, data, xhr) {
+
+            if (data.error != '') {
+                $("#respuesta").html(data.error);
+            } else {
+                $("#respuesta").html(data.proceso);
+            }
+            $("#respuesta").dialog("open");
+        },
+        onError: function (jqXHR, textStatus, errorThrown) {
+            var message = "Se presenta el siguiente incidente al intentar ejectuar esta consulta. <br /> Codigo: " + jqXHR.status + " <br />" + textStatus + "<br />" + errorThrown;
+            $("#respuesta").html(message);
+            $("#respuesta").dialog("open");
+
+        }
+    });
 
 });

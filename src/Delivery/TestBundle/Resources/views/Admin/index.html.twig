@@ -24,18 +24,10 @@
             </div>
             <h3>Importar</h3>
             <div>
-                {#                <div><label> Cargar Archivo:</label></div>#}
-                {#<div id="fileuploader">Cargar</div>
+                <div><label> Cargar Archivo:</label></div>
+                <div id="fileuploader">Cargar</div>
                 <div id="respuesta">
-                </div>#}
-                <form name="form-import" id="form-import" method="post" action="{{path('admin_importar')}}" enctype="multipart/form-data" >
-                    <div class="form-group">
-                        <label class="control-label">Select File</label>
-                        <input id="upload" name="upload" class="file" type="file" class="file" />
-                        <input type="submit" value="Cargar" class="btn btn-success" />
-                    </div>
-                </form>
-                <input type="hidden" id="filename" name="filename" value="{{sessionId}}" />
+                </div>
             </div>
         </div>
     {% endif %}

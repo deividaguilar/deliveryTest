@@ -13,5 +13,5 @@ Delivery\TestBundle\Entity\User:
             type: string
             length: 255
             column: numberPhone
-            nullable: false
+            nullable: true
     lifecycleCallbacks: {  }

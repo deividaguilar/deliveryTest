@@ -20,7 +20,7 @@ class UsuarioController extends Controller {
 
         $user = $usrManager->findUserBy(array('id' => $id));
 
-        if (!empty($request->request->get('telefono'))) {
+        if (!empty($request->request->get('email'))) {
 
             $user->setUsername($request->request->get('usuario'));
             $user->setEmail($request->request->get('email'));

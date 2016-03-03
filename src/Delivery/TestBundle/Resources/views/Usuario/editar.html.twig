@@ -3,7 +3,7 @@
     Editar USR
 {% endblock %}
 {% block body %}
-    <span class="title">Actualizar de Usuarios</span>
+    <span class="title">Actualizar Usuarios</span>
     <form id="form_usuarios" method="post" class="form-horizontal" role="form" action="{{path('usuario_actualizar', {'id':id})}}">
         <div class="form-group">
             <label for="email">Email
@@ -13,7 +13,7 @@
                 <input id="usuario" value="{{usuario}}" name="usuario" type="text" required /> 
             </label>
             <label for="telefono">Telefono
-                <input id="telefono" value="{{telefono}}" name="telefono" type="number" required /> 
+                <input id="telefono" value="{{telefono}}" name="telefono" type="number" /> 
             </label>
         </div>
         <input type="submit" class="btn btn-info" value="Guardar">
