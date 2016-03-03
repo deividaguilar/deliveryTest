@@ -42,7 +42,7 @@ class ExportarController extends Controller {
 
     private function createFile($data) {
 
-        $ruta = str_replace("src\\Delivery\\TestBundle\\Controller", "web\\bundles\\deliverytest\\descargas\\", __DIR__);
+        $ruta = str_replace("src".DIRECTORY_SEPARATOR."Delivery".DIRECTORY_SEPARATOR."TestBundle".DIRECTORY_SEPARATOR."Controller", "web".DIRECTORY_SEPARATOR."bundles".DIRECTORY_SEPARATOR."deliverytest".DIRECTORY_SEPARATOR."descargas".DIRECTORY_SEPARATOR."", __DIR__);
         $this->validatesMemory();
         // Create new PHPExcel object
         $objPHPExcel = new PHPExcel();

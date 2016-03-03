@@ -28,7 +28,7 @@ class ImportarController extends Controller {
     public function indexAction(Request $request) {
 
         if ($request->isXmlHttpRequest()) {
-            $this->setRoute(str_replace("src\\Delivery\\TestBundle\\Controller", "web\\bundles\\deliverytest\\upload\\", __DIR__));
+            $this->setRoute(str_replace("src".DIRECTORY_SEPARATOR."Delivery".DIRECTORY_SEPARATOR."TestBundle".DIRECTORY_SEPARATOR."Controller", "web".DIRECTORY_SEPARATOR."bundles".DIRECTORY_SEPARATOR."deliverytest".DIRECTORY_SEPARATOR."upload".DIRECTORY_SEPARATOR."", __DIR__));
             $this->setFile($request->files->get('archivoSubido'));
             $this->uploadFile();
             $salida = $this->getResponse();
