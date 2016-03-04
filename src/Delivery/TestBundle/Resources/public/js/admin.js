@@ -27,7 +27,7 @@ $(document).ready(function () {
     $("#fileuploader").uploadFile({
         url: "/web/app.php/admin/importar/",
         method: 'POST',
-        allowedTypes: "xlsx",
+        allowedTypes: "xlsx,csv,tsv,xls",
         fileName: "archivoSubido",
         multiple: false,
         returnType: "json",

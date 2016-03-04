@@ -205,12 +205,10 @@ class ImportarController extends Controller {
         $this->validMemory();
         $salida = new \stdClass();
         $objReader = $this->selectType();
-        $sheetnames = $objReader->listWorksheetNames($this->getFileMove());
         $objReader->setReadDataOnly(true);
-        $objReader->setLoadSheetsOnly($sheetnames[0]);
         $objPHPExcel = $objReader->load($this->getFileMove());
         $objWorksheet = $objPHPExcel->getActiveSheet();
-
+        
 
         $i = 0;
         foreach ($objWorksheet->getRowIterator() as $row) {
@@ -220,10 +218,10 @@ class ImportarController extends Controller {
 
             $arrayDatos = Array();
             foreach ($cellIterator as $cell) {
-
+                
                 $arrayDatos[] = $cell->getValue();
             }
-
+            
             $salida->retorno[$i] = $arrayDatos;
 
             if ($ciclo == FALSE) {
@@ -289,19 +287,19 @@ class ImportarController extends Controller {
      * Selecciona el formato para la generacion del archivo plano
      */
 
-    private function createPlane($objPhpExel) {
+    private function createPlane() {
         if ($this->getExtesion() == 'csv') {
             $delimiter = ",";
         } else {
             $delimiter = "\t";
         }
 
-        return PHPExcel_IOFactory::createWriter($objPhpExel, 'CSV')
+        return \PHPExcel_IOFactory::createReader('CSV')
                         ->setDelimiter($delimiter)
                         ->setEnclosure('"')
                         ->setSheetIndex(0);
     }
-
+    
     private function setFile($file) {
         $this->file = $file;
     }
