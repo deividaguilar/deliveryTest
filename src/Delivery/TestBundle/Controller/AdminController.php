@@ -30,7 +30,13 @@ class AdminController extends Controller {
         $user->setRoles($request->request->get('rol'));
         $user->setPassword(password_hash(12345, PASSWORD_BCRYPT));
 
-        $usrManager->updateUser($user);
+        try {
+            $usrManager->updateUser($user);
+        } catch (\Exception $ex) {
+            $this->mensaje("error creando usuario:" .$ex->getCode());
+            return $this->render('DeliveryTestBundle:Admin:index.html.twig', array('usuarios' => $this->todosLosUsuarios()));
+        }
+
 
         $this->mensaje("Usuario Creado Correctamente");
 

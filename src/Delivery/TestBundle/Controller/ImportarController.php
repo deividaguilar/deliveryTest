@@ -28,7 +28,7 @@ class ImportarController extends Controller {
     public function indexAction(Request $request) {
 
         if ($request->isXmlHttpRequest()) {
-            $this->setRoute(str_replace("src".DIRECTORY_SEPARATOR."Delivery".DIRECTORY_SEPARATOR."TestBundle".DIRECTORY_SEPARATOR."Controller", "web".DIRECTORY_SEPARATOR."bundles".DIRECTORY_SEPARATOR."deliverytest".DIRECTORY_SEPARATOR."upload".DIRECTORY_SEPARATOR."", __DIR__));
+            $this->setRoute(str_replace("src" . DIRECTORY_SEPARATOR . "Delivery" . DIRECTORY_SEPARATOR . "TestBundle" . DIRECTORY_SEPARATOR . "Controller", "web" . DIRECTORY_SEPARATOR . "bundles" . DIRECTORY_SEPARATOR . "deliverytest" . DIRECTORY_SEPARATOR . "upload" . DIRECTORY_SEPARATOR . "", __DIR__));
             $this->setFile($request->files->get('archivoSubido'));
             $this->uploadFile();
             $salida = $this->getResponse();
@@ -142,25 +142,27 @@ class ImportarController extends Controller {
      * luego de pasar el proceso de validacin, toma las posiciones restantes 
      * y las cara. Finaliza el proceso de importacion.
      */
+
     private function insertUsr($data) {
 
         $usrManager = $this->container->get('fos_user.user_manager');
 
-        try {
-            foreach ($data->retorno as $value) {
-                $user = $usrManager->createUser();
 
-                $user->setUsername($value[0]);
-                $user->setEmail($value[1]);
-                $user->setEnabled(1);
-                $user->setNumberPhone($value[3]);
-                $user->setRoles(explode(",", $value[2]));
-                $user->setPassword(password_hash(12345, PASSWORD_BCRYPT));
+        foreach ($data->retorno as $value) {
+            $user = $usrManager->createUser();
 
+            $user->setUsername($value[0]);
+            $user->setEmail($value[1]);
+            $user->setEnabled(1);
+            $user->setNumberPhone($value[3]);
+            $user->setRoles(explode(",", $value[2]));
+            $user->setPassword(password_hash(12345, PASSWORD_BCRYPT));
+
+            try {
                 $usrManager->updateUser($user);
+            } catch (\Exception $ex) {
+                
             }
-        } catch (\Doctrine\Orm\NoResultException $e) {
-            
         }
     }
 
@@ -208,7 +210,7 @@ class ImportarController extends Controller {
         $objReader->setReadDataOnly(true);
         $objPHPExcel = $objReader->load($this->getFileMove());
         $objWorksheet = $objPHPExcel->getActiveSheet();
-        
+
 
         $i = 0;
         foreach ($objWorksheet->getRowIterator() as $row) {
@@ -218,10 +220,10 @@ class ImportarController extends Controller {
 
             $arrayDatos = Array();
             foreach ($cellIterator as $cell) {
-                
+
                 $arrayDatos[] = $cell->getValue();
             }
-            
+
             $salida->retorno[$i] = $arrayDatos;
 
             if ($ciclo == FALSE) {
@@ -299,7 +301,7 @@ class ImportarController extends Controller {
                         ->setEnclosure('"')
                         ->setSheetIndex(0);
     }
-    
+
     private function setFile($file) {
         $this->file = $file;
     }
